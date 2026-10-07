@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Helpanion – Hilfe</title>
 <style>
@@ -17,6 +18,14 @@
   <li><a href="datenschutz.html">Datenschutzerklärung</a> · <a href="datenschutz.html#en">Privacy policy</a></li>
   <li><a href="konto-loeschen.html">Konto und Daten löschen</a> · <a href="konto-loeschen.html#en">Delete account and data</a></li>
 </ul>
-<p>Kontakt / Contact: <a href="mailto:support@quantenrauschen.eu">support@quantenrauschen.eu</a></p>
+<p>Kontakt / Contact: <a class="mail" data-u="support" data-d="quantenrauschen.eu">support [at] quantenrauschen.eu</a></p>
+<script>
+// Adresse erst im Browser zusammensetzen - einfache Adress-Sammler sehen nur „support [at] …“.
+document.querySelectorAll("a.mail").forEach(function (a) {
+  var m = a.dataset.u + "@" + a.dataset.d;
+  a.href = "mailto:" + m;
+  (a.querySelector("strong") || a).textContent = m;
+});
+</script>
 </body>
 </html>

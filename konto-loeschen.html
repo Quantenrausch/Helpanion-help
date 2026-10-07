@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Helpanion – Konto und Daten löschen</title>
 <style>
@@ -24,7 +25,7 @@
 <p>Ist Helpanion auf weiteren Geräten mit demselben Konto angemeldet, melde dich dort vorher ab.</p>
 
 <h2>Weg 2: per E-Mail</h2>
-<p>Hast du keinen Zugriff mehr auf die App, schreib an <a href="mailto:support@quantenrauschen.eu"><strong>support@quantenrauschen.eu</strong></a> mit dem Betreff „Helpanion – Konto löschen“ und der E-Mail-Adresse deines Google-Kontos. Wir löschen Konto und Daten innerhalb von 30 Tagen und bestätigen dir die Löschung.</p>
+<p>Hast du keinen Zugriff mehr auf die App, schreib an <a class="mail" data-u="support" data-d="quantenrauschen.eu"><strong>support [at] quantenrauschen.eu</strong></a> mit dem Betreff „Helpanion – Konto löschen“ und der E-Mail-Adresse deines Google-Kontos. Wir löschen Konto und Daten innerhalb von 30 Tagen und bestätigen dir die Löschung.</p>
 
 <h2>Was gelöscht wird</h2>
 <ul>
@@ -51,7 +52,7 @@
 <p>If Helpanion is signed in with the same account on other devices, sign out there first.</p>
 
 <h2>Option 2: by email</h2>
-<p>If you no longer have access to the app, write to <a href="mailto:support@quantenrauschen.eu"><strong>support@quantenrauschen.eu</strong></a> with the subject “Helpanion – delete account” and the email address of your Google account. We delete the account and data within 30 days and confirm the deletion.</p>
+<p>If you no longer have access to the app, write to <a class="mail" data-u="support" data-d="quantenrauschen.eu"><strong>support [at] quantenrauschen.eu</strong></a> with the subject “Helpanion – delete account” and the email address of your Google account. We delete the account and data within 30 days and confirm the deletion.</p>
 
 <h2>What is deleted</h2>
 <ul>
@@ -65,5 +66,13 @@
 
 <p>More in the <a href="datenschutz.html#en">privacy policy</a>.</p>
 </div>
+<script>
+// Adresse erst im Browser zusammensetzen - einfache Adress-Sammler sehen nur „support [at] …“.
+document.querySelectorAll("a.mail").forEach(function (a) {
+  var m = a.dataset.u + "@" + a.dataset.d;
+  a.href = "mailto:" + m;
+  (a.querySelector("strong") || a).textContent = m;
+});
+</script>
 </body>
 </html>

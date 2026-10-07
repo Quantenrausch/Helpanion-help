@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Helpanion – Datenschutzerklärung</title>
 <style>
@@ -17,7 +18,7 @@
 <p>Stand: 7. Oktober 2026 · <a href="#en">English version below</a></p>
 
 <h2>1. Verantwortlicher</h2>
-<p>C. Brückle<br>Wiesbadener Str. 7<br>12161 Berlin, Deutschland<br>E-Mail: <a href="mailto:support@quantenrauschen.eu">support@quantenrauschen.eu</a></p>
+<p>C. Brückle<br>Wiesbadener Str. 7<br>12161 Berlin, Deutschland<br>E-Mail: <a class="mail" data-u="support" data-d="quantenrauschen.eu">support [at] quantenrauschen.eu</a></p>
 
 <h2>2. Kurzfassung</h2>
 <ul>
@@ -64,7 +65,7 @@
 <p>Last updated: October 7, 2026</p>
 
 <h2>1. Controller</h2>
-<p>C. Brückle<br>Wiesbadener Str. 7<br>12161 Berlin, Germany<br>Email: <a href="mailto:support@quantenrauschen.eu">support@quantenrauschen.eu</a></p>
+<p>C. Brückle<br>Wiesbadener Str. 7<br>12161 Berlin, Germany<br>Email: <a class="mail" data-u="support" data-d="quantenrauschen.eu">support [at] quantenrauschen.eu</a></p>
 
 <h2>2. Summary</h2>
 <ul>
@@ -104,5 +105,13 @@
 <h2>10. Changes</h2>
 <p>We update this policy when the app or the law changes. The version published here applies.</p>
 </div>
+<script>
+// Adresse erst im Browser zusammensetzen - einfache Adress-Sammler sehen nur „support [at] …“.
+document.querySelectorAll("a.mail").forEach(function (a) {
+  var m = a.dataset.u + "@" + a.dataset.d;
+  a.href = "mailto:" + m;
+  (a.querySelector("strong") || a).textContent = m;
+});
+</script>
 </body>
 </html>
