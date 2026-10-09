@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Helpanion – Oura verbinden</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.6 system-ui, sans-serif; max-width: 30rem; margin: 0 auto; padding: 3rem 1rem; text-align: center; }
+  h1 { font-size: 1.4rem; }
+  a.btn { display: inline-block; margin-top: 1rem; padding: .9rem 1.6rem; border-radius: .6rem; background: #8b5cf6; color: #fff; text-decoration: none; font-weight: 600; }
+  p.small { font-size: .9rem; opacity: .75; }
+</style>
+</head>
+<body>
+<h1 id="title">Oura ist verbunden</h1>
+<p id="text">Du wirst zurück zur Helpanion-App geleitet.</p>
+<a class="btn" id="open" href="helpanion://oura/callback">Zurück zu Helpanion</a>
+<p class="small" id="hint">Öffnet sich die App nicht von selbst, tippe auf die Taste.</p>
+<p class="small">Diese Seite gibt die Antwort von Oura nur an die App auf deinem Gerät weiter. Auf dem Webserver wird nichts gespeichert.</p>
+<script>
+// Oura leitet nach der Anmeldung hierher (OAuth2, Client-Flow): das Zugangs-Token steht im
+// URL-Fragment (#access_token=…), das der Browser nie an den Server sendet; eine Ablehnung kommt
+// als ?error=… in der Query. Beides wird unverändert an die App übergeben (helpanion://oura/callback),
+// danach wird die Adresse im Browser-Verlauf bereinigt, damit das Token dort nicht stehen bleibt.
+(function () {
+  var query = location.search || "";
+  var hash = location.hash || "";
+  var target = "helpanion://oura/callback" + query + hash;
+  var denied = /[?&]error=/.test(query);
+  if (denied) {
+    document.getElementById("title").textContent = "Verbindung abgelehnt";
+    document.getElementById("text").textContent = "Du hast Helpanion keinen Zugriff erteilt. Du kannst es in der App jederzeit erneut versuchen.";
+    document.getElementById("hint").textContent = "";
+  } else if (!/access_token=/.test(hash)) {
+    document.getElementById("title").textContent = "Keine Antwort von Oura";
+    document.getElementById("text").textContent = "Diese Seite wird nur am Ende der Oura-Anmeldung aus der Helpanion-App aufgerufen.";
+    document.getElementById("hint").textContent = "";
+  }
+  document.getElementById("open").href = target;
+  try { history.replaceState(null, "", location.pathname); } catch (e) {}
+  if (!denied) { setTimeout(function () { location.href = target; }, 300); }
+})();
+</script>
+</body>
+</html>
