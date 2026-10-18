@@ -37,7 +37,8 @@
   <a href="#leiter">Offene Leiter bis zum Versagen</a>
   <a href="#zeit">Zeitformate: EDT, EMOM, AMRAP in X Minuten</a>
   <a href="#cooldown">Cooldown</a>
-  <a href="#periodisierung">Wochen, Entlastung, Techniken aussetzen</a>
+  <a href="#periodisierung">Zyklen, Entlastung, Techniken aussetzen</a>
+  <a href="#trainingstage-einfuegen">Trainingstage aus einem anderen Plan, neuer Durchlauf</a>
   <a href="#abweichen">Im Training abweichen</a>
   <a href="#nachher">Nach dem Training: Abschlusskarte und Erfolge</a>
 </nav>
@@ -174,14 +175,24 @@
 </ol>
 <p class="tip">Ist der Cooldown im Plan, gehört er zum Training: Er lässt sich nicht überspringen, und <span class="ui">Training beenden</span> führt erst in den Cooldown. Abbrechen geht weiterhin.</p>
 
-<h2 id="periodisierung">Wochen, Entlastung, Techniken aussetzen</h2>
+<h2 id="periodisierung">Zyklen, Entlastung, Techniken aussetzen</h2>
 <ol>
-  <li>Plan → Reiter <span class="ui">Progression</span>. Gibt es noch keine Wochen: <span class="ui">Progression anlegen</span>; weitere mit <span class="ui">Woche anhängen</span>.</li>
-  <li>In einer Woche den Bereich antippen (z. B. <span class="ui">Hauptteil</span>). Im Blatt <span class="ui">Sätze vorgeben</span>, <span class="ui">Ziel vorgeben</span> und <span class="ui">Intensität vorgeben (% 1RM)</span> setzen.</li>
-  <li>Für eine leichtere Woche <span class="ui">Entlastung: halbe Sätze</span> ankreuzen (halbiert die Sätze aller Übungen des Bereichs, aufgerundet), dazu bei Bedarf weniger % 1RM vorgeben und <span class="ui">Intensitätstechniken in dieser Woche aussetzen</span> ankreuzen. Damit die Woche auch als Entlastung zählt (keine Bestwerte, kein Einstellsatz), heißt ihre Phase z. B. „Entlastung“ - Stift an der Woche.</li>
+  <li>Plan → Reiter <span class="ui">Progression</span>. Die Progression läuft in Zyklen: ein Zyklus ist jeder Trainingstag des Plans einmal, der nächste beginnt, wenn alle trainiert sind - nicht nach dem Kalender. Gibt es noch keine Zyklen: <span class="ui">Progression anlegen</span>; weitere mit <span class="ui">Zyklus anhängen</span>. Wie oft du pro Woche trainieren willst (Wochensoll), stellst du unter ⋮ <span class="ui">Plan bearbeiten</span> → <span class="ui">Trainings pro Woche</span> ein.</li>
+  <li>In einem Zyklus den Bereich antippen (z. B. <span class="ui">Hauptteil</span>). Im Blatt <span class="ui">Sätze vorgeben</span>, <span class="ui">Ziel vorgeben</span> und <span class="ui">Intensität vorgeben (% 1RM)</span> setzen.</li>
+  <li>Für einen leichteren Zyklus <span class="ui">Entlastung: halbe Sätze</span> ankreuzen (halbiert die Sätze aller Übungen des Bereichs, aufgerundet), dazu bei Bedarf weniger % 1RM vorgeben und <span class="ui">Intensitätstechniken in diesem Zyklus aussetzen</span> ankreuzen. Damit der Zyklus auch als Entlastung zählt (keine Bestwerte, kein Einstellsatz), heißt seine Phase z. B. „Entlastung“ - Stift am Zyklus.</li>
   <li>Wechselnde Tagesschwerpunkte (z. B. schwer am Montag, leichter am Donnerstag) legst du als verschiedene Einheiten A und B mit eigenen Vorgaben an.</li>
 </ol>
-<p class="tip">Pläne aus dem KI-Assistenten können Entlastungswochen mit halbierten Sätzen und ausgesetzten Techniken bereits mitbringen.</p>
+<p class="tip">Pläne aus dem KI-Assistenten können Entlastungszyklen mit halbierten Sätzen und ausgesetzten Techniken bereits mitbringen.</p>
+
+<h2 id="trainingstage-einfuegen">Trainingstage aus einem anderen Plan, neuer Durchlauf</h2>
+<p>Ein aktiver Plan reicht: statt zwischen Plänen zu wechseln, holst du einzelne Trainingstage eines anderen Plans in deinen Plan.</p>
+<ol>
+  <li>Plan öffnen → ⋮ <span class="ui">Trainingstage einfügen</span> (erscheint, sobald du einen zweiten Plan hast) → Plan wählen, aus dem die Tage kommen.</li>
+  <li>Tage ankreuzen und unter <span class="ui">Einfügen</span> die Stelle wählen (<span class="ui">Am Anfang</span>, <span class="ui">Nach A · …</span> oder <span class="ui">Am Ende</span>). Die Zeile darunter zeigt die neue Reihenfolge. Heißen deine Tage A, B, C … der Reihe nach, bekommen sie danach wieder fortlaufende Buchstaben; frühere Trainings tragen dann den neuen Buchstaben ihres Tages.</li>
+  <li><span class="ui">Trainings pro Woche</span> ist mit dem bisherigen Wert plus den neuen Tagen vorbelegt – bei Bedarf ändern, dann <span class="ui">… Trainingstage einfügen</span>.</li>
+</ol>
+<p>Die eingefügten Tage nehmen ihre Vorgaben je Zyklus mit. Hat der andere Plan weniger Zyklen, gelten danach die seines letzten Zyklus; hat er mehr, bekommt dein Plan zusätzliche Zyklen (für die bisherigen Tage als Kopie des letzten). Im Reiter <span class="ui">Progression</span> stehen diese Vorgaben unter <span class="ui">Nur C · D</span>; <span class="ui">Grundwerte (nicht wie oben)</span> heißt, dass die Vorgabe für alle Trainingstage für diese Tage nicht gilt. Der andere Plan bleibt unverändert, seine Trainings bleiben bei ihm.</p>
+<p class="tip">Plan zu Ende? Die Karte <span class="ui">Plan abgeschlossen</span> bietet <span class="ui">Neuer Durchlauf</span>: derselbe Plan beginnt wieder bei Zyklus 1, die Gewichte folgen deinem 1RM. Darunter <span class="ui">Folgeplan erstellen</span> für einen neuen Plan mit deiner KI.</p>
 
 <h2 id="abweichen">Im Training abweichen</h2>
 <p>Alles hier gilt nur für das laufende Training, der Plan bleibt unverändert.</p>
@@ -200,7 +211,7 @@
   <li><strong>Auf der Uhr:</strong> kurze Vibration und eine Kurzfassung, bis du <span class="ui">OK</span> tippst.</li>
   <li><strong>Erfolge:</strong> Reiter <span class="ui">Erfolge</span> → <span class="ui">Auszeichnungen</span>: erreichte oben, offene mit Fortschritt, versteckte als „???“. Antippen zeigt Bedingung und <span class="ui">Warum das gut ist</span>. Unter <span class="ui">Bestwerte</span> stehen je Übung bestes e1RM und schwerster Satz.</li>
 </ul>
-<p class="tip">Auszeichnungen werden aus deinen Trainings berechnet, auch rückwirkend. Kraft-Auszeichnungen zählen nicht in Entlastungswochen und nicht bei schlechter Bereitschaft (Oura); Tagesserien gibt es bewusst nicht.</p>
+<p class="tip">Auszeichnungen werden aus deinen Trainings berechnet, auch rückwirkend. Kraft-Auszeichnungen zählen nicht in Entlastungszyklen und nicht bei schlechter Bereitschaft (Oura); Tagesserien gibt es bewusst nicht.</p>
 
 <!-- ===================================================================== English -->
 <div class="lang" id="en" lang="en">
@@ -223,7 +234,8 @@
   <a href="#en-ladder">Open ladder to failure</a>
   <a href="#en-time">Time formats: EDT, EMOM, AMRAP in X minutes</a>
   <a href="#en-cooldown">Cool-down</a>
-  <a href="#en-periodization">Weeks, deloads, pausing techniques</a>
+  <a href="#en-periodization">Cycles, deloads, pausing techniques</a>
+  <a href="#en-insert-days">Training days from another plan, new run</a>
   <a href="#en-deviate">Deviating during a workout</a>
   <a href="#en-after">After training: summary card and awards</a>
 </nav>
@@ -360,14 +372,24 @@
 </ol>
 <p class="tip">Once the cool-down is in the plan it is part of the workout: it can’t be skipped, and <span class="ui">Finish workout</span> takes you to the cool-down first. Cancelling still works.</p>
 
-<h2 id="en-periodization">Weeks, deloads, pausing techniques</h2>
+<h2 id="en-periodization">Cycles, deloads, pausing techniques</h2>
 <ol>
-  <li>Plan → <span class="ui">Progression</span> tab. If there are no weeks yet: <span class="ui">Create progression</span>; more with <span class="ui">Add week</span>.</li>
-  <li>In a week, tap a part of the plan (e.g. <span class="ui">Main part</span>). In the sheet, use <span class="ui">Set number of sets</span>, <span class="ui">Set target</span> and <span class="ui">Set intensity (% 1RM)</span>.</li>
-  <li>For a lighter week, tick <span class="ui">Deload: half the sets</span> (halves the sets of every exercise in that part, rounded up), lower the % 1RM if needed and tick <span class="ui">Pause intensity techniques this week</span>. For the week to count as a deload (no personal records, no test set), name its phase e.g. “Deload” - pencil on the week.</li>
+  <li>Plan → <span class="ui">Progression</span> tab. Progression runs in cycles: a cycle is every training day of the plan once, the next one starts when all are trained - not by the calendar. If there are no cycles yet: <span class="ui">Create progression</span>; more with <span class="ui">Add cycle</span>. How often you want to train per week (weekly target) is set under ⋮ <span class="ui">Edit plan</span> → <span class="ui">Trainings per week</span>.</li>
+  <li>In a cycle, tap a part of the plan (e.g. <span class="ui">Main part</span>). In the sheet, use <span class="ui">Set number of sets</span>, <span class="ui">Set target</span> and <span class="ui">Set intensity (% 1RM)</span>.</li>
+  <li>For a lighter cycle, tick <span class="ui">Deload: half the sets</span> (halves the sets of every exercise in that part, rounded up), lower the % 1RM if needed and tick <span class="ui">Pause intensity techniques this cycle</span>. For the cycle to count as a deload (no personal records, no test set), name its phase e.g. “Deload” - pencil on the cycle.</li>
   <li>For different daily focuses (e.g. heavy on Monday, lighter on Thursday), create separate sessions A and B with their own prescriptions.</li>
 </ol>
-<p class="tip">Plans from the AI assistant can already include deload weeks with halved sets and paused techniques.</p>
+<p class="tip">Plans from the AI assistant can already include deload cycles with halved sets and paused techniques.</p>
+
+<h2 id="en-insert-days">Training days from another plan, new run</h2>
+<p>One active plan is enough: instead of switching between plans, you bring single training days of another plan into yours.</p>
+<ol>
+  <li>Open the plan → ⋮ <span class="ui">Insert training days</span> (appears once you have a second plan) → choose the plan the days come from.</li>
+  <li>Tick the days and choose the place under <span class="ui">Insert</span> (<span class="ui">At the start</span>, <span class="ui">After A · …</span> or <span class="ui">At the end</span>). The line below shows the new order. If your days are called A, B, C … in order, they get consecutive letters again afterwards; earlier workouts then show their day’s new letter.</li>
+  <li><span class="ui">Trainings per week</span> is preset to the previous value plus the new days – change it if needed, then <span class="ui">Insert … training days</span>.</li>
+</ol>
+<p>The inserted days keep their targets per cycle. If the other plan has fewer cycles, those of its last cycle apply afterwards; if it has more, your plan gets additional cycles (for the existing days as a copy of the last one). In the <span class="ui">Progression</span> tab these targets are listed under <span class="ui">Only C · D</span>; <span class="ui">Base values (not as above)</span> means the target for all training days does not apply to these days. The other plan stays as it is, its workouts stay with it.</p>
+<p class="tip">Plan finished? The <span class="ui">Plan completed</span> card offers <span class="ui">New run</span>: the same plan starts again at cycle 1, the weights follow your 1RM. Below it, <span class="ui">Create follow-up plan</span> for a new plan with your AI.</p>
 
 <h2 id="en-deviate">Deviating during a workout</h2>
 <p>Everything here applies to the current workout only; the plan stays unchanged.</p>
@@ -386,7 +408,7 @@
   <li><strong>On the watch:</strong> a short vibration and a brief summary until you tap <span class="ui">OK</span>.</li>
   <li><strong>Awards:</strong> tab <span class="ui">Awards</span> → <span class="ui">Awards</span>: earned ones on top, open ones with progress, hidden ones as “???”. Tap to see the condition and <span class="ui">Why it matters</span>. <span class="ui">Bests</span> lists the best e1RM and heaviest set per exercise.</li>
 </ul>
-<p class="tip">Awards are computed from your workouts, including past ones. Strength awards do not count in deload weeks or on days with poor readiness (Oura); there are deliberately no daily streaks.</p>
+<p class="tip">Awards are computed from your workouts, including past ones. Strength awards do not count in deload cycles or on days with poor readiness (Oura); there are deliberately no daily streaks.</p>
 </div>
 
 <script>
