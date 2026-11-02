@@ -24,10 +24,18 @@
 // URL-Fragment (#access_token=…), das der Browser nie an den Server sendet; eine Ablehnung kommt
 // als ?error=… in der Query. Beides wird unverändert an die App übergeben (helpanion://oura/callback),
 // danach wird die Adresse im Browser-Verlauf bereinigt, damit das Token dort nicht stehen bleibt.
+// Ab App-Version 150 trägt der state ein Präfix (a. = Helpanion, d. = Debug-Build): dann geht alles als
+// intent://…;package=… nur an dieses Paket - helpanion:// könnte auch eine fremde App beanspruchen (Audit S4).
+// Ein Intent-URI hat kein eigenes Fragment, die Werte aus dem Fragment wandern deshalb in die Query.
 (function () {
   var query = location.search || "";
   var hash = location.hash || "";
-  var target = "helpanion://oura/callback" + query + hash;
+  var params = [query.replace(/^\?/, ""), hash.replace(/^#/, "")].filter(function (p) { return p; }).join("&");
+  var stateMatch = /(?:^|&)state=([ad])\.[0-9a-f]{32}(?:&|$)/.exec(params);
+  var packages = { a: "com.qn.helpanion", d: "com.qn.helpanion.debug" };
+  var target = stateMatch
+    ? "intent://oura/callback" + (params ? "?" + params : "") + "#Intent;scheme=helpanion;package=" + packages[stateMatch[1]] + ";end"
+    : "helpanion://oura/callback" + query + hash;
   var denied = /[?&]error=/.test(query);
   if (denied) {
     document.getElementById("title").textContent = "Verbindung abgelehnt";
