@@ -16,16 +16,18 @@
 <body>
 <h1 id="title">Oura ist verbunden</h1>
 <p id="text">Du wirst zurück zur Helpanion-App geleitet.</p>
-<a class="btn" id="open" href="helpanion://oura/callback">Zurück zu Helpanion</a>
+<a class="btn" id="open" href="#">Zurück zu Helpanion</a>
 <p class="small" id="hint">Öffnet sich die App nicht von selbst, tippe auf die Taste.</p>
 <p class="small">Diese Seite gibt die Antwort von Oura nur an die App auf deinem Gerät weiter. Auf dem Webserver wird nichts gespeichert.</p>
 <script>
 // Oura leitet nach der Anmeldung hierher (OAuth2, Client-Flow): das Zugangs-Token steht im
 // URL-Fragment (#access_token=…), das der Browser nie an den Server sendet; eine Ablehnung kommt
-// als ?error=… in der Query. Beides wird unverändert an die App übergeben (helpanion://oura/callback),
+// als ?error=… in der Query. Beides wird an die App übergeben (intent-Link, siehe unten),
 // danach wird die Adresse im Browser-Verlauf bereinigt, damit das Token dort nicht stehen bleibt.
-// Ab App-Version 150 trägt der state ein Präfix (a. = Helpanion, d. = Debug-Build): dann geht alles als
-// intent://…;package=… nur an dieses Paket - helpanion:// könnte auch eine fremde App beanspruchen (Audit S4).
+// Der state trägt ein Präfix (a. = Helpanion, d. = Debug-Build, ab App-Version 150): weitergeleitet wird nur als
+// intent://…;package=… an dieses Paket - helpanion:// könnte auch eine fremde App beanspruchen (Audit S4). Seit
+// 2026-11-02 gibt es keinen Rückweg über helpanion:// mehr: ein state ohne Präfix (App bis 149, oder ein fremder
+// Link) bekommt nur den Hinweis, die App zu aktualisieren - das Token verlässt den Browser dann nicht.
 // Ein Intent-URI hat kein eigenes Fragment, die Werte aus dem Fragment wandern deshalb in die Query.
 (function () {
   var query = location.search || "";
@@ -35,8 +37,17 @@
   var packages = { a: "com.qn.helpanion", d: "com.qn.helpanion.debug" };
   var target = stateMatch
     ? "intent://oura/callback" + (params ? "?" + params : "") + "#Intent;scheme=helpanion;package=" + packages[stateMatch[1]] + ";end"
-    : "helpanion://oura/callback" + query + hash;
+    : null;
   var denied = /[?&]error=/.test(query);
+  var answered = denied || /access_token=/.test(hash);
+  if (answered && !target) {
+    document.getElementById("title").textContent = "Bitte Helpanion aktualisieren";
+    document.getElementById("text").textContent = "Diese Version der App kann Oura nicht mehr verbinden. Aktualisiere Helpanion und verbinde Oura danach erneut in der App.";
+    document.getElementById("hint").textContent = "";
+    document.getElementById("open").style.display = "none";
+    try { history.replaceState(null, "", location.pathname); } catch (e) {}
+    return;
+  }
   if (denied) {
     document.getElementById("title").textContent = "Verbindung abgelehnt";
     document.getElementById("text").textContent = "Du hast Helpanion keinen Zugriff erteilt. Du kannst es in der App jederzeit erneut versuchen.";
@@ -46,9 +57,9 @@
     document.getElementById("text").textContent = "Diese Seite wird nur am Ende der Oura-Anmeldung aus der Helpanion-App aufgerufen.";
     document.getElementById("hint").textContent = "";
   }
-  document.getElementById("open").href = target;
+  if (target) { document.getElementById("open").href = target; } else { document.getElementById("open").style.display = "none"; }
   try { history.replaceState(null, "", location.pathname); } catch (e) {}
-  if (!denied) { setTimeout(function () { location.href = target; }, 300); }
+  if (target && !denied) { setTimeout(function () { location.href = target; }, 300); }
 })();
 </script>
 </body>
